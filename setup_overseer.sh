@@ -1,13 +1,13 @@
 #!/bin/bash
 
-sudo apt-get update -y;
-sudo apt-get upgrade -y;
-
 if [ -f "./.env" ]; then
     echo "Load environment variables from .env files"
     . .env
+fi
 
-    env
+if [ "${UPDATE_SYSTEM}"]; then
+    sudo apt-get update -y;
+    sudo apt-get upgrade -y;
 fi
 
 if [ -d "./private/" ]; then
