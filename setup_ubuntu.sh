@@ -36,7 +36,7 @@ if [ "${INSTALL_PYTHON3}" = true ]; then
 fi
 
 if [ "x$ALLOWED_SSH_KEY" == "x" ]; then
-    echo ${$ALLOWED_SSH_KEY} >> ~/.ssh/
+    echo ${$ALLOWED_SSH_KEY} >> ~/.ssh/authorized_keys
 fi
 
 # prepare private key
@@ -44,8 +44,6 @@ if [ "${GENERATE_PRIVATE_KEY}" = true ]; then
     if [ ! -f ~/.ssh/id_ed25519 ]; then
         echo "> Generate private key for host"
         ssh-keygen -t ed25519 -q -C $USER@$HOSTNAME -f ~/.ssh/id_ed25519 -P -N
-
-        ls -l ~/.ssh/id_ed25519*
     fi
 fi
 
